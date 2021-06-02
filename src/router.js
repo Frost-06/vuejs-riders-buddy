@@ -3,7 +3,9 @@ import Router from 'vue-router';
 import Public from './views/Public.vue';
 import Login from './views/Login.vue';
 import Registration from './views/Registration.vue';
-import Profile from './views/Profile.vue';
+import Dashboard from './views/Dashboard.vue';
+import ProfileUser from './views/ProfileUser.vue';
+import EditProfile from './views/EditProfile.vue';
 
 Vue.use(Router);
 
@@ -30,8 +32,20 @@ export const router = new Router({
 
       {
         path: '/profile',
-        name: 'Profile',
-        component: Profile
+        name: 'ProfileUser',
+        component: ProfileUser
+      },
+
+      {
+        path: '/dashboard',
+        name: 'Dashboard',
+        component: Dashboard
+      },
+
+      {
+        path: '/editprofile',
+        name: 'EditProfile',
+        component: EditProfile
       },
     ]
 });

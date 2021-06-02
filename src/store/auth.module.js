@@ -21,10 +21,12 @@ export const auth = {
         }
       );
     },
+    
     logout({ commit }) {
       AuthService.logout();
       commit('logout');
     },
+
     register({ commit }, user) {
       return AuthService.register(user).then(
         response => {
@@ -33,6 +35,19 @@ export const auth = {
         },
         error => {
           commit('registerFailure');
+          return Promise.reject(error);
+        }
+      );
+    },
+
+    update({ commit }, user) {
+      return AuthService.update(user).then(
+        response => {
+          commit('updaterSuccess');
+          return Promise.resolve(response.data);
+        },
+        error => {
+          commit('updateFailure');
           return Promise.reject(error);
         }
       );

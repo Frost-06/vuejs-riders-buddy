@@ -1,6 +1,6 @@
 <template>
   <div id="app">   
-      <div class="container">
+      <div>
         <router-view />
       </div>
   </div>
@@ -16,7 +16,4 @@
 #app {
   font-family: Poppins;
 }
-
-
-
 </style>

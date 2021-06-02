@@ -28,6 +28,17 @@ class AuthService {
       password: user.password
     });
   }
+
+  update(user) {
+    return axios.post(API_URL + 'update', {
+      id: user.id,
+      firstname: user.firstname,
+      lastname: user.lastname,
+      username: user.username,
+      email: user.email,
+      password: user.password
+    });
+  }
 }
 
 export default new AuthService();
