@@ -30,8 +30,7 @@ class AuthService {
   }
 
   update(user) {
-    return axios.post(API_URL + 'update', {
-      id: user.id,
+    return axios.put(API_URL + 'update', {
       firstname: user.firstname,
       lastname: user.lastname,
       username: user.username,
