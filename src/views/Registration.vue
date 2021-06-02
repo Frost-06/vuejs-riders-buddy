@@ -11,69 +11,74 @@
         </h2>
         <p>Already have an account? <router-link to="/login" style="text-decoration: none; color: #1AA3E9; font-weight: bold;"> <span class="link">Log in</span></router-link></p>
       </div>
+
         <form action="" class="frm-1" name="form" @submit.prevent="handleRegister">
           <div v-if="!successful">
-          <div class="frm-grp">
-            <div class="first-group">
-                <div class="group-1">
-                    <div>
-                    <label>First Name</label>
+            <div class="frm-grp">
+              <div class="first-group">
+                    <div class="group-1">
+                      <div>
+                        <label>First Name</label>
+                      </div>
+
+                      <div>
+                          <input  v-model="user.firstname"
+                                  v-validate="'required|min:3|max:20'"
+                                  type="text"
+                                  name="firstname" placeholder="Ex: Andre" required/>
+                      </div>
                     </div>
-                    <div>
-                        <input  v-model="user.firstname"
+                  <div class="group-2">
+                      <div>
+                        <label>Last Name</label>
+                      </div>
+
+                      <div>
+                          <input  v-model="user.lastname"
+                                  v-validate="'required|min:3|max:20'"
+                                  type="text"
+                                  name="lastname" placeholder="Ex: Guinita" required/>
+                      </div>
+                  </div>
+              </div>
+              <div class="second-group">
+                  <div class="group-3">
+                      <div>
+                        <label>Email Address</label>
+                      </div>
+                      <div>
+                          <input  v-model="user.email"
+                                  v-validate="'required|email|max:50'"
+                                  type="email"
+                                  name="email" 
+                                  class="email-input" placeholder="Ex: ridersbuddy@email.com" required/>
+                      </div>
+                  </div>
+
+                  <div class="group-4">
+                      <div>
+                        <label>Username</label>
+
+                        <input  v-model="user.username"
                                 v-validate="'required|min:3|max:20'"
                                 type="text"
-                                name="firstname" placeholder="Ex: Andre" required/>
-                    </div>
-                    </div>
-                <div class="group-2">
-                    <div>
-                    <label>Last Name</label>
-                    </div>
-                    <div>
-                        <input  v-model="user.lastname"
-                                v-validate="'required|min:3|max:20'"
-                                type="text"
-                                name="lastname" placeholder="Ex: Guinita" required/>
-                    </div>
-                </div>
-                </div>
-             <div class="second-group">
-                <div class="group-3">
-                    <div>
-                    <label>Email Address</label>
-                    </div>
-                    <div>
-                        <input  v-model="user.email"
-                                v-validate="'required|email|max:50'"
-                                type="email"
-                                name="email" 
-                                class="email-input" placeholder="Ex: ridersbuddy@email.com" required/>
-                    </div>
-                </div>
-                <div class="group-4">
-                    <div>
-                      <label>Username</label>
-                      <input  v-model="user.username"
-                              v-validate="'required|min:3|max:20'"
-                              type="text"
-                              name="username" placeholder="RidersBuddy06" required/>
-                    </div>
+                                name="username" placeholder="RidersBuddy06" required/>
+                      </div>
 
-                    <div class="group-5">
-                    <div>
-                    <label>Password</label>
-                    <input  v-model="user.password"
-                            v-validate="'required|min:6|max:40'"
-                            type="password"
-                            name="password" placeholder="Ex: 6+ Characters, 1 Capital Letter" required/>
-                    </div>
-                </div>
+                      <div class="group-5">
+                        <div>
+                          <label>Password</label>
+                          <input  v-model="user.password"
+                                  v-validate="'required|min:6|max:40'"
+                                  type="password"
+                                  name="password" placeholder="Ex: 6+ Characters, 1 Capital Letter" required/>
+                        </div>
+                      </div>
 
-                </div>
-                
+                  </div>
+              </div>
+
             </div>
-          </div>
                     <button type="submit" id="login" style="background-color:#1AA3E9;
                                                             border-radius: 54px;
                                                             font-weight: 600;
@@ -87,7 +92,7 @@
                                                             margin-right: 1.6em;
                                                             margin-top: 3em;
                                                             margin-left: 36%;
-          ">Sign up</button>
+                      ">Sign up</button>
           </div>
         </form>
 
@@ -175,6 +180,16 @@ export default {
     font-family: var(--body-font);
 }
 
+.alert-success {
+  color: var(--primary-color);
+}
+
+.alert-danger {
+  color: #DB3939;
+  margin-left: 25%;
+  margin-top: 2em;
+}
+
 #main-1 {
   margin: 0;
     background-repeat: no-repeat;
@@ -198,6 +213,7 @@ export default {
   display: flex;
   flex-direction: column;
   margin-left: 10%;
+  margin-top: -9%;
 }
 
 .right-side h2 {
@@ -263,7 +279,7 @@ export default {
 }
 
 .group-1 input {
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 .group-2 {
@@ -271,7 +287,7 @@ export default {
 }
 
 .group-2 input {
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 .group-3 {
@@ -279,7 +295,7 @@ export default {
 }
 
 .group-3 input {
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 .group-4 {
@@ -288,7 +304,7 @@ export default {
 }
 
 .group-4 input {
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 .group-5 {

@@ -44,7 +44,11 @@
           Login</button>
           <span v-show="loading" class="lds-ring">
           <div></div><div></div><div></div><div></div></span>
-        <div v-if="message" class="alert alert-danger" role="alert">{{message}}</div>
+        <div v-if="message" 
+          class="alert alert-danger" 
+          role="alert">
+          {{message}}
+        </div>
         </form>
          
     </div>
@@ -58,11 +62,11 @@ import User from '../models/user';
 
 export default {
   name: 'Login',
+  props: ['message'],
   data() {
     return {
       user: new User('', ''),
       loading: false,
-      message: ''
     };
   },
   computed: {
@@ -119,6 +123,16 @@ export default {
     box-sizing: border-box;
     margin: 0;
     font-family: var(--body-font);
+}
+
+.alert-success {
+  color: var(--primary-color);
+}
+
+.alert-danger {
+  color: #DB3939;
+  margin-left: 25%;
+  margin-top: 2em;
 }
 
 #main-1 {
