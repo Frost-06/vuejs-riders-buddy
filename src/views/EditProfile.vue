@@ -34,110 +34,128 @@
         </div>
     </nav>
     <div class="modal-content">
-         <form action="" class="frm-1" name="form">
-        <div>
-                <h1 style="font-style: normal;
-                font-weight: bold;
-                font-size: 33px;
-                margin-left: 25%;
-                margin-top: 35px;
-                color: #1AA3E9;">Update Information</h1>
-                <p style="font-style: normal;
-font-weight: normal;
-color: rgba(0, 0, 0, 0.5);
-margin-left: 25%
-">Update your name, email, username and passwords</p>
-        </div>
-          <div>
-          <div class="frm-grp">
-            <div class="first-group" >
-                <div class="group-1">
-                    <div>
-                    <label>First Name</label>
+         <form action="" class="frm-1" name="form" @submit.prevent="handleUpdate">
+                                <h1 style="font-style: normal;
+                                    font-weight: bold;
+                                    font-size: 33px;
+                                    margin-left: 25%;
+                                    margin-top: 35px;
+                                    color: #1AA3E9;">Update Information</h1>
+                                    <p style="font-style: normal;
+                                            font-weight: normal;
+                                            color: rgba(0, 0, 0, 0.5);
+                                            margin-left: 25%">Update your name, email, username and passwords</p>
+          <div v-if="!successful">
+            <div class="frm-grp">
+              <div class="first-group">
+                    <div class="group-1">
+                      <div>
+                        <label>First Name</label>
+                      </div>
+
+                      <div>
+                          <input v-model="currentUser.id"
+                                  v-validate="'required|min:3|max:20'"
+                                  type="hidden"
+                                  name="id" placeholder="Ex: Andre" required/>
+                          <input  v-model="currentUser.firstname"
+                                  v-validate="'required|min:3|max:20'"
+                                  type="text"
+                                  name="firstname" placeholder="Ex: Andre" required/>
+                      </div>
                     </div>
-                    <div>
-                        <input  v-model="currentUser.firstname"
+                  <div class="group-2">
+                      <div>
+                        <label>Last Name</label>
+                      </div>
+
+                      <div>
+                          <input  v-model="currentUser.lastname"
+                                  v-validate="'required|min:3|max:20'"
+                                  type="text"
+                                  name="lastname" placeholder="Ex: Guinita" required/>
+                      </div>
+                  </div>
+              </div>
+              <div class="second-group">
+                  <div class="group-3">
+                      <div>
+                        <label>Email Address</label>
+                      </div>
+                      <div>
+                          <input  v-model="currentUser.email"
+                                  v-validate="'required|email|max:50'"
+                                  type="email"
+                                  name="email" 
+                                  class="email-input" placeholder="Ex: ridersbuddy@email.com" required/>
+                      </div>
+                  </div>
+
+                  <div class="group-4">
+                      <div>
+                        <label>Username</label>
+
+                        <input  v-model="currentUser.username"
                                 v-validate="'required|min:3|max:20'"
                                 type="text"
-                                name="firstname" placeholder="Ex: Andre"  required/>
-                    </div>
-                    </div>
-                <div class="group-2">
-                    <div>
-                    <label>Last Name</label>
-                    </div>
-                    <div>
-                        <input  v-model="currentUser.lastname"
-                                v-validate="'required|min:3|max:20'"
-                                type="text"
-                                name="lastname" placeholder="Ex: Guinita"  required/>
-                    </div>
-                </div>
-                </div>
-             <div class="second-group">
-                <div class="group-3">
-                    <div>
-                    <label>Email Address</label>
-                    </div>
-                    <div class="email-grp">
-                        <input  v-model="currentUser.email"
-                                v-validate="'required|email|max:50'"
-                                type="email"
-                                name="email" 
-                                class="email-input" placeholder="Ex: ridersbuddy@email.com"  required/>
-                    </div>
-                </div>
-                <div class="group-4">
-                    <div>
-                      <label>Username</label>
-                      <input  v-model="currentUser.username"
-                              v-validate="'required|min:3|max:20'"
-                              type="text"
-                              name="username" placeholder="RidersBuddy06"  required/>
-                    </div>
+                                name="username" placeholder="RidersBuddy06" required/>
+                      </div>
 
-                    <div class="group-5">
-                    <div>
-                    <label>Password</label>
-                    <input  v-model="currentUser.password"
-                            v-validate="'required|min:6|max:40'"
-                            type="password"
-                            name="password" placeholder="Ex: 6+ Characters, 1 Capital Letter" required/>
-                    </div>
-                </div>
+                      <div class="group-5">
+                        <div>
+                          <label>Password</label>
+                          <input  v-model="currentUser.password"
+                                  v-validate="'required|min:6|max:40'"
+                                  type="password"
+                                  name="password" placeholder="Ex: 6+ Characters, 1 Capital Letter" required/>
+                        </div>
+                      </div>
 
-                </div>
-                
+                  </div>
+              </div>
+              
             </div>
+                    <button type="submit" id="login" style="background-color:#1AA3E9;
+                                                            border-radius: 54px;
+                                                            font-weight: 600;
+                                                            font-size: 16px;
+                                                            width: 220px;
+                                                            height: 60px;
+                                                            border: none;
+                                                            cursor: pointer;
+                                                            color: #fff;
+                                                            outline-style: none;
+                                                            margin-right: 1.6em;
+                                                            margin-top: 3em;
+                                                            margin-left: 43%;
+                      ">Save Changes</button>
           </div>
-          </div>
-          <button type="button" id="save" style="background-color:#1AA3E9;
-                                                  border-radius: 54px;
-                                                  font-weight: 600;
-                                                  font-size: 16px;
-                                                  width: 220px;
-                                                  height: 60px;
-                                                  border: none;
-                                                  cursor: pointer;
-                                                  color: #fff;
-                                                  outline-style: none;
-                                                  margin-left: 43%;
-                                                  margin-top: 3em;">Save Changes</button>
         </form>
-    
-    <div
-        v-if="message"
-        class="alert"
-        :class="successful ? 'alert-success' : 'alert-danger'"
-      >{{message}}</div>
+        <div
+                v-if="message"
+                class="alert"
+                :class="successful ? 'alert-success' : 'alert-danger'"
+            >{{message}}
+        </div> 
     </div>
 </div>
   
 </template>
 
 <script>
+import User from '../models/user';
+
 export default {
   name: 'EditProfile',
+  data() {
+    return {
+      user: new User('', '', '','', '', ''),
+      submitted: false,
+      successful: false,
+      message: ''
+    };
+  },
+
   computed: {
     currentUser() {
       return this.$store.state.auth.user;
@@ -149,6 +167,28 @@ export default {
     }
   },
    methods: {
+    handleUpdate() {
+      this.message = '';
+      this.submitted = true;
+      this.$validator.validate().then(isValid => {
+        if (isValid) {
+          this.$store.dispatch('auth/update', this.currentUser).then(
+            data => {
+              this.message = data.message;
+              this.successful = true;
+            },
+            error => {
+              this.message =
+                (error.response && error.response.data) ||
+                error.message ||
+                error.toString();
+              this.successful = false;
+            }
+          );
+        }
+      });
+    },
+
     logOut() {
       this.$store.dispatch('auth/logout');
       this.$router.push('/login');
