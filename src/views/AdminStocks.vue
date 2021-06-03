@@ -43,11 +43,11 @@
                                     font-size: 33px;
                                     margin-left: 6%;
                                     margin-top: 35px;
-                                    color: #1AA3E9;">List of Users</h1>
+                                    color: #1AA3E9;">List of Stocks</h1>
                                     <p style="font-style: normal;
                                             font-weight: normal;
                                             color: rgba(0, 0, 0, 0.5);
-                                            margin-left: 6%">View User Data</p>
+                                            margin-left: 6%">View List of Stocks</p>
                    <table id="tblSample">
                     <thead>
                         <tr>
