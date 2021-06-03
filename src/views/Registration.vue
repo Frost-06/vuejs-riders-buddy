@@ -124,7 +124,7 @@ export default {
       user: new User('', '', '','', '', ''),
       submitted: false,
       successful: false,
-      message: ''
+      message: '',
     };
   },
   computed: {
@@ -153,6 +153,7 @@ export default {
                 (error.response && error.response.data) ||
                 error.message ||
                 error.toString();
+          
               this.successful = false;
             }
           );

@@ -33,29 +33,300 @@
         </div>
         </div>
     </nav>
+    <div>
+        <div class="home-part">
+             <div  class="dtr-tbl">
+               <div class="tbl-1">
+                   <h1 style="font-style: normal;
+                                    font-weight: bold;
+                                    font-size: 33px;
+                                    margin-left: 6%;
+                                    margin-top: 35px;
+                                    color: #1AA3E9;">List of Bikes</h1>
+                                    <p style="font-style: normal;
+                                            font-weight: normal;
+                                            color: rgba(0, 0, 0, 0.5);
+                                            margin-left: 6%">Suggestion you can try our Electric Bike!</p>
+                   <table id="tblSample">
+                    <thead>
+                        <tr>
+                            <th>Bike Type</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mountain Bike</td>
+                            <td>100</td>
+                            <td>50.00</td>
+                            <td>Available</td>
+                        </tr>
+                        <tr>
+                            <td>Road Bike</td>
+                            <td>100</td>
+                            <td>80.00</td>
+                            <td>Unavailable</td>
+                        </tr>
+                        <tr>
+                            <td>Electric Bike</td>
+                            <td>100</td>
+                            <td>100.50</td>
+                            <td>Unavailable</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div> 
+                <div class="tbl-2">
+                    <h1 style="font-style: normal;
+                                    font-weight: bold;
+                                    font-size: 33px;
+                                    margin-left: 6%;
+                                    margin-top: 35px;
+                                    color: #1AA3E9;">List of Borrowed Bikes</h1>
+                                    <p style="font-style: normal;
+                                            font-weight: normal;
+                                            color: rgba(0, 0, 0, 0.5);
+                                            margin-left: 6%">You can view your borrowed bikes and when to return it</p>
+                   <table id="tblSample">
+                    <thead>
+                        <tr>
+                            <th>Date Borrowed</th>
+                            <th>Bike Type</th>
+                            <th>Quantity</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Durations</th>
+                            <th>Payment</th>
+                            <th>Status</th>
+                            <th>Staff</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01/01/2021</td>
+                            <td>Mountain Bike</td>
+                            <td>3</td>
+                            <td>08:00</td>
+                            <td>15:00</td>
+                            <td>8 hrs 5 mins</td>
+                            <td>400</td>
+                            <td>Returned</td>
+                            <td>Andre Guinita</td>
+                        </tr>
+                        <tr>
+                             <td>01/01/2021</td>
+                            <td>Mountain Bike</td>
+                            <td>3</td>
+                            <td>08:00</td>
+                            <td>15:00</td>
+                            <td>8 hrs 5 mins</td>
+                            <td>400</td>
+                            <td>Pending</td>
+                            <td>Checking</td>
+                        </tr>
+                        <tr>
+                            <td>01/01/2021</td>
+                            <td>Mountain Bike</td>
+                            <td>3</td>
+                            <td>08:00</td>
+                            <td>15:00</td>
+                            <td>8 hrs 5 mins</td>
+                            <td>400</td>
+                            <td>Done</td>
+                            <td>Andre Guinita</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <div>
+         <form action="" class="frm-1" name="form" @submit.prevent="saveTransaction">
+                                    <h1 style="font-style: normal;
+                                    font-weight: bold;
+                                    font-size: 33px;
+                                    margin-left: 26%;
+                                    margin-top: 35px;
+                                    color: #1AA3E9;">Borrow Information</h1>
+                                    <p style="font-style: normal;
+                                            font-weight: normal;
+                                            color: rgba(0, 0, 0, 0.5);
+                                            margin-left: 26%">Choose from various of bike from Mountain Bike up to Electric Bike</p>
+          <div>
+            <div class="frm-grp">
+              <div class="first-group">
+                    <div class="group-1">
+                      <div>
+                          <input  v-model="currentUser.id"
+                                  v-validate="'required|min:3|max:20'"
+                                  type="text"
+                                  name="lastname" placeholder="Ex: Guinita" required hidden/>
+                      </div>
+                      <div>
+                        <label>First Name</label>
+                      </div>
+                      <div class="inpt">
+                          <input  v-model="currentUser.firstname"
+                                  v-validate="'required|min:3|max:20'"
+                                  type="text"
+                                  name="firstname" placeholder="Ex: Andre" required disabled/>
+                      </div>
+                      <div>
+                        <label>Bike type</label>
+                      </div>
+                      <div class="inpt" style="margin-top: -6px">
+                          <select v-model="transactions.biketype" id="biketype" name="biketype" class ="input1" placeholder="Ex: Andre">
+                            <option value="Mtb">Moutain Bike</option>
+                            <option value="rb">Road Bike</option>
+                            <option value="eb">Electric Bike</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label>Start Time</label>
+                      </div>
+
+                      <div class="inpt">
+                          <input  v-model="transactions.startTime"
+                                  v-validate="'required|min:3|max:20'"
+                                  type="time"
+                                  name="lastname" placeholder="Ex: Guinita" required/>
+                      </div>
+                      <div>
+                        <label>Price</label>
+                      </div>
+
+                      <div class="inpt">
+                          <input  v-model="transactions.price"
+                                  v-validate="'required|min:3|max:20'"
+                                  type="text"
+                                  name="lastname" placeholder="Ex: Guinita" required/>
+                      </div>
+                    </div>
+                
+                  <div class="group-2">
+
+                      <div>
+                        <label>Last Name</label>
+                      </div>
+
+                      <div class="inpt" style="margin-top: -3px;">
+                          <input  v-model="currentUser.lastname"
+                                  v-validate="'required|min:3|max:20'"
+                                  type="text"
+                                  name="lastname" placeholder="Ex: Guinita" required disabled/>
+                      </div>
+                      <div>
+                        <label>Bike Quantity</label>
+                      </div>
+
+                      <div class="inpt">
+                          <input  v-model="transactions.borrowqty"
+                                  v-validate="'required|min:3|max:20'"
+                                  type="number"
+                                  name="lastname" placeholder="Ex: 2" required/>
+                      </div>
+                      <div>
+                        <label>End Time</label>
+                      </div>
+
+                      <div class="inpt" style="margin-top: -3px;">
+                          <input  v-model="transactions.endTime"
+                                  v-validate="'required|min:3|max:20'"
+                                  type="time"
+                                  name="lastname" placeholder="Ex: Guinita" required/>
+                      </div>
+                       <div>
+                        <label>Date Borrowed</label>
+                      </div>
+
+                      <div class="inpt">
+                          <input  v-model="transactions.dateborrowed"
+                                  v-validate="'required|min:3|max:20'"
+                                  type="date"
+                                  name="lastname" placeholder="Ex: Guinita" required/>
+                      </div>
+                  </div>
+              </div>
+            </div>
+                    <button type="submit" id="submit" style="background-color:#1AA3E9;
+                                                            border-radius: 54px;
+                                                            font-weight: 600;
+                                                            font-size: 16px;
+                                                            width: 220px;
+                                                            height: 60px;
+                                                            border: none;
+                                                            cursor: pointer;
+                                                            color: #fff;
+                                                            outline-style: none;
+                                                            margin-right: 1.6em;
+                                                            margin-top: 1em;
+                                                            margin-left: 43%;
+                      " >Submit</button>
+          </div>
+        </form>
+     </div>
+            </div>
+         
+     
+        </div>
+
+</div>
 </div>
 </template>
 
 <script>
+import http from '../services/http-common'
 export default {
+    
   name: 'NavbarUser',
+  data()
+  {
+    return {
+      transactions: {
+        firstname:"",
+        lastname:"",
+        borrowqty:"",
+        startTime:"",
+        endTime:"",
+        price:"",
+        dateborrowed:"",
+        status: "PENDING"
+    }
+    };
+  },
+
   computed: {
     currentUser() {
       return this.$store.state.auth.user;
     }
   },
-  mounted() {
-    if (!this.currentUser) {
-      this.$router.push('/login');
-    }
-  },
+
    methods: {
     logOut() {
       this.$store.dispatch('auth/logout');
       this.$router.push('/login');
+    },
+    saveTransaction(){
+      var data = {
+        customerid:this.currentUser.id,
+        firstname:this.currentUser.firstname,
+        lastname:this.currentUser.lastname,
+      };
+      http
+            .post("/transaction", data)
+            .then(response => {
+              this.transactions.id = response.data.id;
+              console.log(response.data);
+            })
+      .catch(e => {
+        console.log(e);
+      });
+      alert("Borrowed");
     }
   }
 };
+
 </script>
 
 <style scoped>
@@ -72,14 +343,14 @@ export default {
 
 *,::before,::after{
     box-sizing: border-box;
-    overflow: hidden;
     margin: 0;
     font-family: var(--body-font);
+    
 }
 
 #main {
     margin: 0;
-    background-image: url(../assets/public-bg.png);
+    background-image: none !important;
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
@@ -92,6 +363,7 @@ nav {
     height: 10%;
     box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.09) !important;
 }
+
 
 .navbar-part {
     display: inline-flex;
@@ -149,4 +421,219 @@ nav {
     height: 51px;
     cursor: pointer;
 }
+
+.home-part {
+    display: inline-flex;
+}
+.right-side {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30%;
+  margin-top: -9%;
+}
+
+.right-side h2 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  color: #1AA3E9;
+}
+
+.right-side p {
+  margin-bottom: 3em;
+}
+
+.first-group {
+    display: inline-flex;
+    margin-left: 40%;
+    margin-top:25px;
+}
+
+.second-group {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.link {
+  font-weight: bold;
+  color: #1AA3E9;
+  margin-left: 6px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#log-in:hover {
+    box-shadow: none;
+    transition: cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.3s;
+    opacity: 80%;
+}
+
+.frm-1 {
+    width: 2000px;
+    margin-top: 20%;
+}
+.frm-grp {
+    margin-left: -23%;
+}
+
+.frm-grp label {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  color: #565656;
+}
+
+
+.frm-grp input {
+  background: #FFFFFF;
+  border: 4px solid rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  border-radius: 20px;
+  width: 400px;
+  height: 74px;
+  outline: none;
+  padding-left: 25px;
+}
+
+.frm-grp .email-input {
+  width: 700px;
+}
+
+.group-1 {
+    margin-right: 5em;
+}
+
+.group-1 input {
+  margin-top: 1em;
+}
+
+.group-2 {
+  width: 500px;
+}
+
+.group-2 input {
+  margin-top: 1.2em;
+}
+
+.group-3 {
+    margin-top: 2em;
+}
+
+.group-3 input {
+  margin-top: 1em;
+}
+
+.group-4 {
+    margin-top: 3em;
+    display: flex;
+}
+
+.group-4 input {
+  margin-top: 1em;
+}
+
+.group-5 {
+  margin-left: 2em;
+}
+
+.inpt {
+    margin-bottom: 25px;
+}
+
+label {
+    margin-top: 25px !important;
+}
+
+input {
+  transition: 0.2s ease-in-out;
+  margin-top: 10%;
+}
+input:focus {
+  border: solid var(--primary-color);
+}
+
+button {
+  transition: 0.2s ease-in-out;
+}
+
+button:hover {
+  transform: scale(0.8);
+}
+
+select {
+  background: #FFFFFF;
+  border: 4px solid rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  border-radius: 20px;
+  width: 400px;
+  height: 74px;
+  outline: none;
+  margin-top: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+select {
+  transition: 0.2s ease-in-out;
+}
+select:focus {
+  border: solid var(--primary-color);
+}
+
+option {
+    padding: 25px;
+}
+
+.home-part {
+    height: 1000px;
+    width: 1000px;
+}
+.dtr-tbl {
+    width: 800px !important;
+}
+.tbl-1 {
+    height: 500px !important;
+}
+
+.tbl-2 {
+    margin-top: -5em;
+}
+
+table {
+    position: relative;
+    border-collapse: collapse;
+    margin-left: 5%;
+    width: 1000px;
+    margin-top: 10%;
+    box-shadow: 0px 4px 39px rgba(0, 0, 0, 0.09);
+    border-radius: 25px;
+    
+}
+
+table:last-child{
+    width: 1800px;
+}
+thead {
+    color: var(--primary-color);
+    box-shadow: 0px 4px 39px rgba(0, 0, 0, 0.09);
+    border-radius: 25px;
+}
+
+th {
+    font-weight: 800;
+}
+
+
+td, th {
+    text-align: center;
+    padding: 15px;
+    vertical-align: center;
+    
+}
+
+tbody {
+    color: #19456B;
+}
+
 </style>

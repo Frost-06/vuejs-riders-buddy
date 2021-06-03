@@ -384,7 +384,6 @@ export default {
 
 *,::before,::after{
     box-sizing: border-box;
-    overflow: hidden;
     margin: 0;
     font-family: var(--body-font);
 }

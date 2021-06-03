@@ -10,6 +10,8 @@
           Login
         </h2>
         <p>Don't have an account? <router-link to="/registration" style="text-decoration: none;"> <span class="link">Sign up</span></router-link></p>
+        <router-link to = "/admin-login"><a href="#" style="">
+            Login as administrator</a></router-link>
       </div>
         <form action="" class="frm-1" @submit.prevent="handleLogin">
           <div class="frm-grp">
@@ -42,6 +44,7 @@
                                                   margin-top: 3em;" 
           :disabled="loading">
           Login</button>
+          
           <span v-show="loading" class="lds-ring">
           <div></div><div></div><div></div><div></div></span>
         <div v-if="message" 
@@ -120,9 +123,11 @@ export default {
 }
 
 *,::before,::after{
-    box-sizing: border-box;
-    margin: 0;
-    font-family: var(--body-font);
+   overflow: hidden
+}
+
+a {
+  color: var(--primary-color);
 }
 
 .alert-success {

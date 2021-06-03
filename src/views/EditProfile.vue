@@ -33,7 +33,6 @@
         </div>
         </div>
     </nav>
-    <div class="modal-content">
          <form action="" class="frm-1" name="form" @submit.prevent="handleUpdate">
                                 <h1 style="font-style: normal;
                                     font-weight: bold;
@@ -45,7 +44,6 @@
                                             font-weight: normal;
                                             color: rgba(0, 0, 0, 0.5);
                                             margin-left: 25%">Update your name, email, username and passwords</p>
-          <div v-if="!successful">
             <div class="frm-grp">
               <div class="first-group">
                     <div class="group-1">
@@ -112,10 +110,7 @@
                       </div>
 
                   </div>
-              </div>
-              
-            </div>
-                    <button type="submit" id="login" style="background-color:#1AA3E9;
+                  <button type="submit" id="login" style="background-color:#1AA3E9;
                                                             border-radius: 54px;
                                                             font-weight: 600;
                                                             font-size: 16px;
@@ -128,8 +123,14 @@
                                                             margin-right: 1.6em;
                                                             margin-top: 3em;
                                                             margin-left: 43%;
-                      ">Save Changes</button>
-          </div>
+                      "
+                    
+                      >Save Changes</button>
+
+              </div>
+              
+            </div>
+
         </form>
         <div
                 v-if="message"
@@ -137,22 +138,24 @@
                 :class="successful ? 'alert-success' : 'alert-danger'"
             >{{message}}
         </div> 
-    </div>
 </div>
   
 </template>
 
 <script>
-import User from '../models/user';
-
+import http from '../services/http-common'
 export default {
   name: 'EditProfile',
-  data() {
+  data()
+  {
     return {
-      user: new User('', '', '','', '', ''),
-      submitted: false,
-      successful: false,
-      message: ''
+      user_data: {
+        firstname:"",
+        lastname:"",
+        email:"",
+        username:"",
+        password:"",
+    }
     };
   },
 
@@ -161,37 +164,35 @@ export default {
       return this.$store.state.auth.user;
     }
   },
-  mounted() {
-    if (!this.currentUser) {
-      this.$router.push('/login');
-    }
-  },
-   methods: {
-    handleUpdate() {
-      this.message = '';
-      this.submitted = true;
-      this.$validator.validate().then(isValid => {
-        if (isValid) {
-          this.$store.dispatch('auth/update', this.currentUser).then(
-            data => {
-              this.message = data.message;
-              this.successful = true;
-            },
-            error => {
-              this.message =
-                (error.response && error.response.data) ||
-                error.message ||
-                error.toString();
-              this.successful = false;
-            }
-          );
-        }
-      });
-    },
 
+   methods: {
     logOut() {
       this.$store.dispatch('auth/logout');
       this.$router.push('/login');
+    },
+
+    handleUpdate(){
+      var data = {
+        customerid:this.currentUser.id,
+        firstname:this.currentUser.firstname,
+        lastname:this.currentUser.lastname,
+        username: this.currentUser.username,
+        email: this.currentUser.email,
+        password: this.currentUser.password
+      };
+      http.put("/update/" + this.currentUser.id, data)
+            .then(response => {
+              this.currentUser.firstname = response.data.firstname;
+              this.currentUser.lastname = response.data.lastname;
+              this.currentUser.email = response.data.email;
+              this.currentUser.username = response.data.username;
+              this.currentUser.password = response.data.password; 
+              console.log(response.data);
+            })
+      .catch(e => {
+        console.log(e);
+      });
+      this.message = "Updated Successfully!";
     }
   }
 };
